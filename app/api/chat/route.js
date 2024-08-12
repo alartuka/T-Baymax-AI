@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
+import dotenv from 'dotenv';
 import OpenAI from "openai";
+dotenv.config();
+
 
 // System prompt for the AI, providing guidelines on how to respond to users
 const systemPrompt = `
@@ -29,45 +32,81 @@ Your tone is warm, friendly, and reassuring, while remaining knowledgeable and a
 You communicate in a clear, jargon-free manner to ensure users feel safe and well-informed.
 `
 
-// POST function to handle incoming requests
-export async function POST(req) {
-    const openai = new OpenAI(
-        {apiKey: process.env.OPENROUTER_API_KEY}
-    )
-    const data = await req.json() // Parse the JSON body of the incoming request
+// const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-    // Create a chat completion request to the API
-    const completion = await openai.chat.completions.create({
-        messages: [{ role: 'system', content: systemPrompt}, ...data],
-        model:"meta-llama/llama-3.1-8b-instruct:free",
-        stream: true,
-    })
+// let genAI;
+// if (process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
+//   genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY);
+// } else {
+//     throw new Error("Please provide API KEY env variable!")
+// }
 
-    console.log('<API Response>', completion)
-    console.log('<data.choices[0]>', completion.choices[0].message.content)
+// const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash",   systemInstruction: systemPrompt})
 
 
-    // Create a ReadableStream to handle the streaming response
-    const stream = new ReadableStream({
-        async start(controller) {
-            const encoder = new TextEncoder() // Create a TextEncoder to convert strings to Uint8Array
-            try {
-                // Iterate over the streamed chunks of the response
-                for await (const chunk of  completion) {
-                    const content = chunk.choices[0]?.delta?.content // Extract the content from the chunk
-                    if (content) {
-                        const text = encoder.encode(content)// Encode the content to Uint8Array
-                        controller.enqueue(text) // Enqueue the encoded text to the stream
-                    }
-                } 
-            } catch (err) {
-                console.error(err)// Handle any errors that occur during streaming
-            } finally {
-                controller.close() // Close the stream when done
-            }
-        },
-    })
+const openai = new OpenAI({
+    baseURL: "https://openrouter.ai/api/v1",
+    apiKey: process.env.NEXT_PUBLIC_OPENROUTER_API_KEY,
+});
+
+export async function POST(req) { 
     
-    return new NextResponse(stream) // Return the stream as the response
+    try {
+        const data = await req.json()
+        // Validate that data is an array and has at least one element
+        if (!Array.isArray(data)) {
+            throw new Error("Invalid input: data should be an array of messages.");
+        }
+        if (!(data.length > 0)) {
+            throw new Error("Invalid input: data should not be empty");
+        }
+
+        // Create a chat completion request to the OpenAI API
+        const completion = await openai.chat.completions.create({
+            messages: [{ role: 'system', content: systemPrompt }, ...data], // Include the system prompt and user messages
+            model: 'meta-llama/llama-3.1-8b-instruct:free', // Specify the model to use
+            stream: true, // Enable streaming responses
+        });
+
+        // Create a ReadableStream to handle the streaming response
+        const stream = new ReadableStream({
+            async start(controller) {
+                const encoder = new TextEncoder(); // Create a TextEncoder to convert strings to Uint8Array
+                try {
+                    // Iterate over the streamed chunks of the response
+                    for await (const chunk of completion) {
+                        const content = chunk.choices[0]?.delta?.content; // Extract the content from the chunk
+                        if (content) {
+                            const text = encoder.encode(content); // Encode the content to Uint8Array
+                            controller.enqueue(text); // Enqueue the encoded text to the stream
+                        }
+                    }
+                } catch (err) {
+                    controller.error(err); // Handle any errors that occur during streaming
+                } finally {
+                    controller.close(); // Close the stream when done
+                    console.log("<STREAM>", stream);
+                }
+            },
+        });
+  
+        return new NextResponse(stream); // Return the stream as the response
+
+    } catch (error) {
+        console.error("<Error in POST /api/chat>", error); // Log the error for debugging
+        return NextResponse.json({ error: error.message }, { status: 400 }); // Return a 400 Bad Request response with the error message
+    }
 }
 
+// const prompt = messages[messages.length - 1].content;
+
+//         // Assuming model.generateContent() expects a string prompt
+//         const result = await model.generateContent(prompt);
+
+//         // Send back the generated content
+//         return new NextResponse(result.response.text(), { status: 200 });
+
+//     } catch (err) {
+//         console.error("Error processing request:", err);
+//         return new NextResponse("Internal Server Error", { status: 500 });
+//     }
