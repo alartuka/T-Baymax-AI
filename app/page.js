@@ -1,140 +1,90 @@
 "use client";
 
-import { Box, Button, Stack, TextField } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import { Box, Button, Stack, Typography } from '@mui/material'
+import { useRouter } from 'next/navigation';
 
-export default function Home() {
-  const [messages, setMessages] = useState([
-    {
-      role: 'assistant',
-      content: "Hello! I am T-Baymax. Your personal healthcare companion! How are you feeling?"
-    },
-  ])
+export default function Landing() {
+    const { push } = useRouter();
+    
 
-  const [message, setMessage] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-
-  const sendMessage = async () => {
-    if (!message.trim() || isLoading) return;  // Don't send empty messages
-    setIsLoading(true)
-
-    // setMessage('')  // Clear the input field
-
-    setMessages((messages) => [
-      ...messages,
-      { role: 'user', content: message },  // Add the user's message to the chat
-      { role: 'assistant', content: '' },  // Add a placeholder for the assistant's response
-    ])
-
-    try {
-      console.log(message)
-      console.log(JSON.stringify([...messages, { role: 'user', content: message }]))
-      
-      const options = {
-        method: 'POST',
-        headers: {
-          "Authorization": `Bearer ${process.env.NEXT_PUBLIC_OPENROUTER_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify([...(messages || []), { role: 'user', content: message }]),
-        
-      }
-      // Send the message to the server
-      const response = await fetch('/api/chat', options)
-
-      console.log("<Response>", response)
-      console.log("<Response.body>", response.body)
-      if (!response.ok) {
-        throw new Error('Network response was not ok')
-      }
-
-      const reader = response.body.getReader()
-      const decoder = new TextDecoder()
-
-      while (true) {
-        const { done, value } = await reader.read()
-        if (done) break
-        const text = decoder.decode(value, { stream: true })
-        setMessages((messages) => {
-          let lastMessage = messages[messages.length - 1]
-          let otherMessages = messages.slice(0, messages.length - 1)
-          return [
-            ...otherMessages,
-            { ...lastMessage, content: lastMessage.content + text },
-          ]
-        })
-      }
-
-    } catch (error) {
-      console.error('Error:', error)
-      setMessages((messages) => [
-        ...messages,
-        { role: 'assistant', content: "I'm sorry, but I encountered an error. Please try again later." },
-      ])
-    } finally {
-      setIsLoading(false)
-      setMessage('')  // Clear the input field
+    // redirect to login
+    const handleLogin = () => {
+        push('login');
     }
-  }
 
-  const handleKeyPress = async (event) => {
-    if (event.key === 'Enter' && !event.shiftKey) {
-      event.preventDefault()
-      sendMessage()
+    // redirect to signup
+    const handleSignup = () => {
+        push('signup');
     }
-  }
-
-  const messagesEndRef = useRef(null)
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
-  useEffect(() => {
-    scrollToBottom()
-  }, [messages])
 
   return (
-    <Box width={'100vw'} height={'100vh'} display={'flex'}flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
-      <Stack direction={'column'} width={'600px'} height={'700px'} border={'1px solid black'} p={2} spacing={2}>
-        <Stack direction={'column'} spacing={2} flexGrow={1} overflow={'auto'} maxHeight={'100%'}>
-          {
-          // messages &&
-            messages.map((message, index) => (
+    <Box width="100vw" height="100vh" gap={3} display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
+      <Stack direction={'column'} width={'100%'} height={'95%'} p={2} spacing={2} sx={{ mt: '10px'}} flexGrow={1} overflow={'auto'} maxHeight={'100%'}>
+          <Box display={'flex'} flexDirection={'column'} position={'relative'} width="100%" p={4} sx={{ bottom: 0 }}>
+            <Stack direction={'column'} spacing={2} sx={{ top: 20 }}>
               <Box
-              key={index}
-              display="flex"
-              justifyContent={ message.role === 'assistant' ? 'flex-start' : 'flex-end' }
+                display="flex"
+                p={1}
+                flexDirection={'column'}
+                alignItems={'flex-start'} 
               >
                 <Box
-                bgcolor={
-                  message.role === 'assistant'
-                    ? 'primary.main'
-                    : 'secondary.main'
-                }
-                color="white"
-                borderRadius={16}
-                p={3}
+                  width="450px"
+                  borderRadius={'60px'}
+                  p={3}
+                  border={'1px solid white'}
+                  sx={{
+                    background: 'linear-gradient(to right, #2E0854, #4B0082, #8B008B, #9400D3, #4B0082, #2E0854)',
+                  }}
                 >
-                  {message.content}
+                  <Typography variant="h6" color='#ffffff' textAlign={'center'}>
+                    AI-powered Personal Healthcare Companion
+                  </Typography>
                 </Box>
               </Box>
-            ))}
-            <div ref={messagesEndRef} />
-        </Stack>
 
-        <Stack direction={'row'} spacing={2}>
-          <TextField
-            label="Message"
-            fullWidth
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            onKeyPress={handleKeyPress}
-            disabled={isLoading}
-          />
-          <Button variant="contained" onClick={sendMessage} disabled={isLoading}>
-            {isLoading ? 'Sending...' : 'Send'}
-          </Button>
+              <Box
+                display="flex"
+                p={1}
+                flexDirection={'column'}
+                alignItems={'flex-end'} 
+              >
+                <Box
+                  width="450px"
+                  borderRadius={'60px'}
+                  p={3}
+                  border={'1px solid white'}
+                  sx={{
+                    background: 'linear-gradient(to right, #FFD700, #FFA500, #FF8C00, #FF4500, #FFA500, #FFD700)',
+                  }}
+                >
+                  <Typography variant="body1" color={'#000000'} textAlign={'center'}>
+                    Chat with personalized healthcare companion anytime, in any language and get immediate helpful response
+                  </Typography>
+                </Box>
+              </Box>
+            </Stack>
+          </Box>
+
+          <Box display={'flex'} flexDirection={'column'} position={'fixed'} justifyContent={'center'} alignItems={'center'} width="100%" p={4} sx={{ bottom: 0 }}>
+          <Stack direction={'column'} spacing={6} justifyContent={'center'} alignItems={'center'}>
+            <Stack direction={'column'} spacing={2} justifyContent={'center'} alignItems={'center'}>
+              <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} 
+              width="450px" borderRadius= {'60px'} p={4} mb={'2px'} 
+              sx={{ background: 'linear-gradient(to right, #000044, #191970, #446CCF, #0F52BA, #191970, #000044)', 
+              }}>
+                <Typography variant="h2" color='#ffffff' textAlign={'center'}>T-Baymax AI</Typography>
+              </Box>
+
+              <Stack direction={'row'} spacing={2}>
+                <Button variant="contained" color="secondary" onClick={handleSignup}>Signup</Button>
+                <Button variant="outlined" color="primary" onClick={handleLogin}>Login</Button>
+              </Stack>
+            </Stack>
+            <Typography variant="p" color='#ffffff' component="p">&copy; {new Date().getFullYear()} Tuka Alsharief. All rights reserved.</Typography>
+          </Stack>
+          </Box>
         </Stack>
-      </Stack>
     </Box>
-  );
+  )
 }

@@ -10,17 +10,24 @@
   },
   "dependencies": {
     "@ai-sdk/google": "^0.0.35",
+    "@auth/firebase-adapter": "^2.4.2",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
     "@google/generative-ai": "^0.16.0",
+    "@mui/icons-material": "^5.16.7",
     "@mui/material": "^5.16.7",
+    "@splinetool/react-spline": "^4.0.0",
+    "@splinetool/runtime": "^1.9.6",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "firebase": "^10.12.5",
+    "firebase-admin": "^11.11.1",
     "next": "14.2.5",
+    "next-auth": "^4.24.7",
     "openai": "^4.55.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "spline": "^0.0.0"
   },
   "type": "module",
   "devDependencies": {

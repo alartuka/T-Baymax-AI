@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
-import dotenv from 'dotenv';
 import OpenAI from "openai";
+import dotenv from 'dotenv';
+
 dotenv.config();
 
 
@@ -31,18 +32,6 @@ You also offer preventative health tips based on user interactions.
 Your tone is warm, friendly, and reassuring, while remaining knowledgeable and authoritative on health-related topics. 
 You communicate in a clear, jargon-free manner to ensure users feel safe and well-informed.
 `
-
-// const { GoogleGenerativeAI } = require("@google/generative-ai");
-
-// let genAI;
-// if (process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
-//   genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY);
-// } else {
-//     throw new Error("Please provide API KEY env variable!")
-// }
-
-// const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash",   systemInstruction: systemPrompt})
-
 
 const openai = new OpenAI({
     baseURL: "https://openrouter.ai/api/v1",
@@ -97,16 +86,3 @@ export async function POST(req) {
         return NextResponse.json({ error: error.message }, { status: 400 }); // Return a 400 Bad Request response with the error message
     }
 }
-
-// const prompt = messages[messages.length - 1].content;
-
-//         // Assuming model.generateContent() expects a string prompt
-//         const result = await model.generateContent(prompt);
-
-//         // Send back the generated content
-//         return new NextResponse(result.response.text(), { status: 200 });
-
-//     } catch (err) {
-//         console.error("Error processing request:", err);
-//         return new NextResponse("Internal Server Error", { status: 500 });
-//     }
