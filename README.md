@@ -1,5 +1,19 @@
 # T-Baymax AI
-🚀 An AI-powered personal healthcare companion in a unique manner that creates a lasting impact
+`An AI-powered personal healthcare companion in a unique manner that creates a lasting impact`
+
+
+## 🌟 Why This Project?
+This project was created as the third submission for my Headstarter Fellowship 2024. The challenge was to build a chatbot, and while following the basic instructions, I saw an opportunity to make something truly personal and impactful—it would also be my first-ever chatbot.
+
+Inspired by Weijie Wang's post, I envisioned this chatbot as a text-based version of Baymax, the lovable personal healthcare companion from the movie Big Hero 6. My goal was to capture Baymax’s essence—being reliable, empathetic, and genuinely helpful—while tailoring it to provide practical healthcare assistance through text.
+
+This project isn’t just a chatbot; it’s my attempt to merge technology with human-like care, bringing a slice of comfort and support to its users.
+
+
+## 💡 Key Features
+- **Personal Healthcare Assistance**: Provides empathetic, Baymax-inspired support for health tips and basic guidance.
+- **User-Friendly Interaction**: Simple text-based interface for easy accessibility.
+- **Scalable Framework**: Flexible design for future features like mental health tips or fitness tracking.
 
 
 ## 📚 Tech Stack
