@@ -26,26 +26,27 @@ This project isn’t just a chatbot; it’s my attempt to merge technology with 
 
 
 ## 🕸️ Demo
-[Youtube](https://youtu.be/7dxM6WoE0KM)
+- the demo is live on [YouTube](https://youtu.be/7dxM6WoE0KM)
 
 
 ## 🔗 Live Link
-[Check it out here!](https://tbaymax-ai.vercel.app)
+- Check it out [here!](https://tbaymax-ai.vercel.app)
 
 
 ## 📢 Let's Connect!
-**Portfolio**: [tuka-alsharief.vercel.app](tuka-alsharief.vercel.app)
-**LinkedIn**: [/in/tukaalarbi](linkedin.com/in/tukaalarbi)
+- **Portfolio**: [tuka-alsharief.vercel.app](tuka-alsharief.vercel.app)
+
+- **LinkedIn**: [/in/tukaalarbi](linkedin.com/in/tukaalarbi)
 
 
 ## 📜 License
-Distributed under the {License Name} License. See LICENSE for more information.
+- Distributed under the ***BSD 3-Clause License***. See **LICENSE** for more information.
 
 
 ## ✨ Acknowledgments
-Special thanks to the [Headstarter](https://headstarter.co/) team for giving me the opportunity to learn and create such project.
+- Special thanks to the [Headstarter](https://headstarter.co/) team for giving me the opportunity to learn and create such a project.
 
-Inspired by *Baymax* character from ***Big Hero 6*** and another Headstarter Fellow ***[Weijie Wang](https://www.linkedin.com/feed/update/urn:li:activity:7227269623514103809?updateEntityUrn=urn%3Ali%3Afs_updateV2%3A%28urn%3Ali%3Aactivity%3A7227269623514103809%2CFEED_DETAIL%2CEMPTY%2CDEFAULT%2Cfalse%29)***
+- Inspired by *Baymax* character from ***Big Hero 6*** and another Headstarter Fellow ***[Weijie Wang](https://www.linkedin.com/feed/update/urn:li:activity:7227269623514103809?updateEntityUrn=urn%3Ali%3Afs_updateV2%3A%28urn%3Ali%3Aactivity%3A7227269623514103809%2CFEED_DETAIL%2CEMPTY%2CDEFAULT%2Cfalse%29)***
 
 
 
