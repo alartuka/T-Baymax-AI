@@ -5,7 +5,7 @@
 ## 🌟 Why This Project?
 This project was created as the third submission for my Headstarter Fellowship 2024. The challenge was to build a chatbot, and while following the basic instructions, I saw an opportunity to make something truly personal and impactful—it would also be my first-ever chatbot.
 
-Inspired by Weijie Wang's post, I envisioned this chatbot as a text-based version of Baymax, the lovable personal healthcare companion from the movie Big Hero 6. My goal was to capture Baymax’s essence—being reliable, empathetic, and genuinely helpful—while tailoring it to provide practical healthcare assistance through text.
+Inspired by another fellow's post (see below), I envisioned this chatbot as a text-based version of Baymax, the lovable personal healthcare companion from the movie Big Hero 6. My goal was to capture Baymax’s essence—being reliable, empathetic, and genuinely helpful—while tailoring it to provide practical healthcare assistance through text.
 
 This project isn’t just a chatbot; it’s my attempt to merge technology with human-like care, bringing a slice of comfort and support to its users.
 
@@ -44,7 +44,8 @@ Distributed under the {License Name} License. See LICENSE for more information.
 
 ## ✨ Acknowledgments
 Special thanks to the [Headstarter](https://headstarter.co/) team for giving me the opportunity to learn and create such project.
-Inspired by *Baymax* character from ***Big Hero 6*** and another Headstarter Fellow [Weijie Wang](https://www.linkedin.com/feed/update/urn:li:activity:7227269623514103809?updateEntityUrn=urn%3Ali%3Afs_updateV2%3A%28urn%3Ali%3Aactivity%3A7227269623514103809%2CFEED_DETAIL%2CEMPTY%2CDEFAULT%2Cfalse%29)
+
+Inspired by *Baymax* character from ***Big Hero 6*** and another Headstarter Fellow ***[Weijie Wang](https://www.linkedin.com/feed/update/urn:li:activity:7227269623514103809?updateEntityUrn=urn%3Ali%3Afs_updateV2%3A%28urn%3Ali%3Aactivity%3A7227269623514103809%2CFEED_DETAIL%2CEMPTY%2CDEFAULT%2Cfalse%29)***
 
 
 
