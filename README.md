@@ -26,7 +26,10 @@ This project isn’t just a chatbot; it’s my attempt to merge technology with 
 
 
 ## 🕸️ Demo
-- the demo is live on [YouTube](https://youtu.be/7dxM6WoE0KM)
+Click on the image below to see the demo on YouTube: <br />
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=7dxM6WoE0KM" target="_blank">
+ <img src="http://img.youtube.com/vi/7dxM6WoE0KM/mqdefault.jpg" alt="Watch the video" width="900" height="600" border="10" />
+</a>
 
 
 ## 🔗 Live Link
