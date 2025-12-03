@@ -20,7 +20,9 @@ This project isn’t just a chatbot; it’s my attempt to merge technology with 
 - Next.js
 - MaterialUI
 - OpenAI
-- LLama3.1 
+- OpenRouter
+- LLama3.1
+- Firebase
 - Spline
 - CI/CD pipelines
 
@@ -36,12 +38,6 @@ Click on the image below to see the demo on YouTube: <br />
 - Check it out [here!](https://tbaymax-ai.vercel.app)
 
 
-## 📢 Let's Connect!
-- **Portfolio**: [tuka-alsharief.vercel.app](tuka-alsharief.vercel.app)
-
-- **LinkedIn**: [/in/tukaalarbi](linkedin.com/in/tukaalarbi)
-
-
 ## 📜 License
 - Distributed under the ***BSD 3-Clause License***. See **LICENSE** for more information.
 
@@ -49,6 +45,12 @@ Click on the image below to see the demo on YouTube: <br />
 ## ✨ Acknowledgments
 - Special thanks to the [Headstarter](https://headstarter.co/) team for giving me the opportunity to learn and create such a project.
 
+
+## 📢 Let's Connect!
+- **Portfolio**: [tuka-alsharief.vercel.app](tuka-alsharief.vercel.app)
+
+- **LinkedIn**: [/in/tukaalarbi](linkedin.com/in/tukaalarbi)
+  
 - Inspired by *Baymax* character from ***Big Hero 6*** and another Headstarter Fellow ***[Weijie Wang](https://www.linkedin.com/feed/update/urn:li:activity:7227269623514103809?updateEntityUrn=urn%3Ali%3Afs_updateV2%3A%28urn%3Ali%3Aactivity%3A7227269623514103809%2CFEED_DETAIL%2CEMPTY%2CDEFAULT%2Cfalse%29)***
 
 
