@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "T-Baymax AI",
-  description: "Your AI-powered personal healthcare companion. Chat with personalized healthcare companion anytime, in any language and get immediate helpful response! - Built by Tuka Alsharief | Tuka Alarbi",
+  description: "Your AI-powered personal healthcare companion. Chat with personalized healthcare companion anytime, in any language and get immediate helpful response! - Built by Tuka",
 };
 
 export default function RootLayout({ children }) {
