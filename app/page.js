@@ -81,7 +81,7 @@ export default function Landing() {
                 <Button variant="outlined" color="primary" onClick={handleLogin}>Login</Button>
               </Stack>
             </Stack>
-            <Typography variant="p" color='#ffffff' component="p">&copy; {new Date().getFullYear()} Tuka Alsharief. All rights reserved.</Typography>
+            <Typography variant="p" color='#ffffff' component="p">&copy; {new Date().getFullYear()} Tuka A. All rights reserved.</Typography>
           </Stack>
           </Box>
         </Stack>
